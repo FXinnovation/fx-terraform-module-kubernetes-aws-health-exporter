@@ -46,6 +46,16 @@ output "deployment_labels" {
   value       = element(concat(kubernetes_deployment.this.*.metadata.0.labels, [{}]), 0)
 }
 
+output "deployment_template_annotations" {
+  description = "Map of annotations that are configured on the deployment."
+  value       = element(concat(kubernetes_deployment.this.*.spec.0.template.0.metadata.0.annotations, [{}]), 0)
+}
+
+output "deployment_template_labels" {
+  description = "Map of labels that are configured on the deployment."
+  value       = element(concat(kubernetes_deployment.this.*.spec.0.template.0.metadata.0.labels, [{}]), 0)
+}
+
 #####
 # Secret
 #####

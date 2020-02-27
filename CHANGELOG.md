@@ -2,6 +2,7 @@
 0.3.0 / 2020-02-27
 ==================
 
+  * feat: Add deployment template variables, outputs
   * feat: Add more outputs
 
 0.2.0 / 2020-02-27

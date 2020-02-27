@@ -61,7 +61,7 @@ resource "kubernetes_deployment" "this" {
       metadata {
         annotations = merge(
           var.annotations,
-          var.deployment_annotations
+          var.deployment_template_annotations
         )
         labels = merge(
           {
@@ -71,7 +71,7 @@ resource "kubernetes_deployment" "this" {
           },
           local.labels,
           var.labels,
-          var.deployment_labels
+          var.deployment_template_labels
         )
       }
       spec {

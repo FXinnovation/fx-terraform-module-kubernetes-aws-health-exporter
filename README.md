@@ -20,6 +20,8 @@ Terraform module to deploy aws-health-exporter on kubernetes.
 | deployment\_annotations | Additionnal annotations that will be merged on the deployment. | `map` | `{}` | no |
 | deployment\_labels | Additionnal labels that will be merged on the deployment. | `map` | `{}` | no |
 | deployment\_name | Name of the deployment that will be create. | `string` | `"aws-health-exporter"` | no |
+| deployment\_template\_annotations | Additionnal annotations that will be merged on the deployment template. | `map` | `{}` | no |
+| deployment\_template\_labels | Additionnal labels that will be merged on the deployment template. | `map` | `{}` | no |
 | enabled | Whether or not to enable this module. | `bool` | `true` | no |
 | image\_name | Name of the docker image to use. | `string` | `"jimdo/aws-health-exporter"` | no |
 | image\_pull\_policy | Image pull policy on the main container. | `string` | `"IfNotPresent"` | no |
@@ -42,6 +44,8 @@ Terraform module to deploy aws-health-exporter on kubernetes.
 | deployment\_annotations | Map of annotations that are configured on the deployment. |
 | deployment\_labels | Map of labels that are configured on the deployment. |
 | deployment\_name | Name of the deployment created by the module. |
+| deployment\_template\_annotations | Map of annotations that are configured on the deployment. |
+| deployment\_template\_labels | Map of labels that are configured on the deployment. |
 | grafana\_dashboards | List of strings, each one representing a separate grafana dashboard. |
 | image\_name | Name of the docker image used for the cloudwatch-exporter container. |
 | image\_pull\_policy | Image pull policy defined on the cloudwatch-exporter container. |
