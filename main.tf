@@ -10,7 +10,8 @@ locals {
     "app.kubernetes.io/managed-by" = "terraform"
     "app.kubernetes.io/name"       = "aws-health-exporter"
   }
-  port = 9383
+  port         = 9383
+  service_port = 80
 }
 
 #####
@@ -185,7 +186,7 @@ resource "kubernetes_service" "this" {
     }
     type = "ClusterIP"
     port {
-      port        = 80
+      port        = local.service_port
       target_port = "http"
       protocol    = "TCP"
       name        = "http"
