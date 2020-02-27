@@ -14,6 +14,6 @@ output "service_name" {
 }
 
 output "grafana_dashboards" {
-  description = "List of strings, each one representing a seperate grafana dashboard."
+  description = "List of strings, each one representing a separate grafana dashboard."
   value       = var.enabled ? [file("${path.module}/templates/grafana-dashboards/aws-health-status.json")] : []
 }

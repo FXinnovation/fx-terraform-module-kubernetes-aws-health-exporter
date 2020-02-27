@@ -40,7 +40,7 @@ Terraform module to deploy aws-health-exporter on kubernetes.
 | Name | Description |
 |------|-------------|
 | deployment\_name | Name of the deployment created by the module. |
-| grafana\_dashboards | List of strings, each one representing a seperate grafana dashboard. |
+| grafana\_dashboards | List of strings, each one representing a separate grafana dashboard. |
 | secret\_name | Name of the secret created by the module. |
 | service\_name | Name of the service created by the module. |
 
