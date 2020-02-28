@@ -8,17 +8,17 @@ output "selector_labels" {
 }
 
 output "image_name" {
-  description = "Name of the docker image used for the cloudwatch-exporter container."
+  description = "Name of the docker image used for the aws-health-status container."
   value       = module.default.image_name
 }
 
 output "image_version" {
-  description = "Tag of the docker image used for the cloudwatch-exporter container."
+  description = "Tag of the docker image used for the aws-health-status container."
   value       = module.default.image_version
 }
 
 output "image_pull_policy" {
-  description = "Image pull policy defined on the cloudwatch-exporter container."
+  description = "Image pull policy defined on the aws-health-status container."
   value       = module.default.image_pull_policy
 }
 

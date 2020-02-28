@@ -1,7 +1,8 @@
 
-0.3.0 / 2020-02-27
+0.3.0 / 2020-02-28
 ==================
 
+  * fix: Change descriptions on outputs
   * fix: Add local labels on secret
   * fix: Add local for service port
   * tech: Add outputs on example
