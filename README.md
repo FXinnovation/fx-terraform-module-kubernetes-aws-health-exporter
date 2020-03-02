@@ -51,6 +51,7 @@ Terraform module to deploy aws-health-exporter on kubernetes.
 | image\_pull\_policy | Image pull policy defined on the aws-health-status container. |
 | image\_version | Tag of the docker image used for the aws-health-status container. |
 | namespace | Name of the namespace in which the resources have been deployed. |
+| prometheus\_alert\_groups | List of maps representing prmetheus alerts. |
 | secret\_annotations | Map of annotations that are configured on the secret. |
 | secret\_labels | Map of labels that are configured on the secret. |
 | secret\_name | Name of the secret created by the module. |
@@ -62,3 +63,7 @@ Terraform module to deploy aws-health-exporter on kubernetes.
 | service\_port\_name | Name of the service port. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+### grafana_dashboards
+
+### prometheus_alert_groups

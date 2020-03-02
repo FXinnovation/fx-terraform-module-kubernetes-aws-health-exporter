@@ -12,6 +12,43 @@ locals {
   }
   port         = 9383
   service_port = 80
+  prometheus_alert_groups = [
+    {
+      "name" = "aws-health-exporter"
+      "rules" = [
+        {
+          "alert"  = "aws-health-exporter - open scheduled changes"
+          "expr"   = "sum(aws_health_events{category=\"scheduledChanges\",status_code=\"open\"}) > 0"
+          "for"    = "1m"
+          "labels" = {}
+          "annotations" = {
+            "summary"     = "AWS Health - Open Scheduled Changes"
+            "description" = "AWS Health\nThere are currently {{ $value }} open scheduled changes."
+          }
+        },
+        {
+          "alert"  = "aws-health-exporter - open issues"
+          "expr"   = "sum(aws_health_events{category=\"issue\",status_code=\"open\"}) > 0"
+          "for"    = "1m"
+          "labels" = {}
+          "annotations" = {
+            "summary"     = "AWS Health - Open Issues"
+            "description" = "AWS Health\nThere are currently {{ $value }} open issue."
+          }
+        },
+        {
+          "alert"  = "aws-health-exporter - open account notifications"
+          "expr"   = "sum(aws_health_events{category=\"accountNotification\",status_code=\"open\"}) > 0"
+          "for"    = "1m"
+          "labels" = {}
+          "annotations" = {
+            "summary"     = "AWS Health - Open Account Notifications"
+            "description" = "AWS Health\nThere are currently {{ $value }} open account notification."
+          }
+        }
+      ]
+    }
+  ]
 }
 
 #####

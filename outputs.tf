@@ -12,6 +12,11 @@ output "grafana_dashboards" {
   value       = var.enabled ? [file("${path.module}/templates/grafana-dashboards/aws-health-status.json")] : []
 }
 
+output "prometheus_alert_groups" {
+  description = "List of maps representing prmetheus alerts."
+  value       = var.enabled ? local.prometheus_alert_groups : []
+}
+
 output "image_name" {
   description = "Name of the docker image used for the aws-health-status container."
   value       = var.enabled ? var.image_name : ""
