@@ -23,7 +23,7 @@ locals {
           "labels" = {}
           "annotations" = {
             "summary"     = "AWS Health - Open Scheduled Changes"
-            "description" = "AWS Health\nThere are currently {{ $value }} open scheduled changes."
+            "description" = "AWS Health:\n {{ $value }} open scheduled changes."
           }
         },
         {
@@ -33,7 +33,7 @@ locals {
           "labels" = {}
           "annotations" = {
             "summary"     = "AWS Health - Open Issues"
-            "description" = "AWS Health\nThere are currently {{ $value }} open issue."
+            "description" = "AWS Health:\n {{ $value }} open issues."
           }
         },
         {
@@ -43,7 +43,7 @@ locals {
           "labels" = {}
           "annotations" = {
             "summary"     = "AWS Health - Open Account Notifications"
-            "description" = "AWS Health\nThere are currently {{ $value }} open account notification."
+            "description" = "AWS Health:\n {{ $value }} open account notifications."
           }
         }
       ]
