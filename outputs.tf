@@ -13,7 +13,7 @@ output "grafana_dashboards" {
 }
 
 output "prometheus_alert_groups" {
-  description = "List of maps representing prmetheus alerts."
+  description = "List of maps representing prometheus alerts."
   value       = var.enabled ? local.prometheus_alert_groups : []
 }
 

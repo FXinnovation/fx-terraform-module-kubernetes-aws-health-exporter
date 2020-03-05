@@ -2,6 +2,7 @@
 0.4.0 / 2020-03-05
 ==================
 
+  * fix: Typo in output description
   * feat: Add promtheus_alert_groups output
 
 0.3.0 / 2020-02-28
