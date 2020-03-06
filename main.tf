@@ -20,31 +20,40 @@ locals {
           "alert"  = "aws-health-exporter - open scheduled changes"
           "expr"   = "sum(aws_health_events{category=\"scheduledChanges\",status_code=\"open\"}) > 0"
           "for"    = "1m"
-          "labels" = {}
-          "annotations" = {
-            "summary"     = "AWS Health - Open Scheduled Changes"
-            "description" = "AWS Health:\n {{ $value }} open scheduled changes."
-          }
+          "labels" = var.prometheus_alert_groups_rules_labels
+          "annotations" = merge(
+            {
+              "summary"     = "AWS Health - Open Scheduled Changes"
+              "description" = "AWS Health:\n {{ $value }} open scheduled changes."
+            },
+            var.prometheus_alert_groups_rules_annotations
+          )
         },
         {
           "alert"  = "aws-health-exporter - open issues"
           "expr"   = "sum(aws_health_events{category=\"issue\",status_code=\"open\"}) > 0"
           "for"    = "1m"
-          "labels" = {}
-          "annotations" = {
-            "summary"     = "AWS Health - Open Issues"
-            "description" = "AWS Health:\n {{ $value }} open issues."
-          }
+          "labels" = var.prometheus_alert_groups_rules_labels
+          "annotations" = merge(
+            {
+              "summary"     = "AWS Health - Open Issues"
+              "description" = "AWS Health:\n {{ $value }} open issues."
+            },
+            var.prometheus_alert_groups_rules_annotations
+          )
         },
         {
           "alert"  = "aws-health-exporter - open account notifications"
           "expr"   = "sum(aws_health_events{category=\"accountNotification\",status_code=\"open\"}) > 0"
           "for"    = "1m"
-          "labels" = {}
-          "annotations" = {
-            "summary"     = "AWS Health - Open Account Notifications"
-            "description" = "AWS Health:\n {{ $value }} open account notifications."
-          }
+          "labels" = var.prometheus_alert_groups_rules_labels
+          "annotations" = merge(
+            {
+              "summary"     = "AWS Health - Open Account Notifications"
+              "description" = "AWS Health:\n {{ $value }} open account notifications."
+            },
+            var.prometheus_alert_groups_rules_annotations
+          )
         }
       ]
     }
