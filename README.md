@@ -3,6 +3,14 @@
 Terraform module to deploy aws-health-exporter on kubernetes.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
+| kubernetes | >= 1.10.0 |
+| random | >= 2.0.0 |
+
 ## Providers
 
 | Name | Version |
@@ -13,7 +21,7 @@ Terraform module to deploy aws-health-exporter on kubernetes.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | access\_key | Client ID that will be used by the aws-health-exporter. | `string` | n/a | yes |
 | annotations | Additionnal annotations that will be merged on all resources. | `map` | `{}` | no |
 | container\_args | List of additionnal arguments passed to the container. | `list` | `[]` | no |
