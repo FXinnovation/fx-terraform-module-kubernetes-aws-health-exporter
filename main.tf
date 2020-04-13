@@ -61,9 +61,9 @@ locals {
           "annotations" = merge(
             {
               "summary"              = "AWS Health - Open Issue"
-              "description"          = "AWS Health:\n There is an open issue on service {{ $labels.service }} in region {{ $labels.region }}."
-              "description_html"     = "<h3>AWS Health</h3><p>There is an open issue on service {{ $labels.service }} in region {{ $labels.region }}.</p>"
-              "description_markdown" = "### AWS Health\nThere is an open issue on service {{ $labels.service }} in region {{ $labels.region }}."
+              "description"          = "AWS Health:\n There is an open issue on service {{ $labels.service }} in region {{ $labels.region }}.\nAWS Status: https://status.aws.amazon.com/"
+              "description_html"     = "<h3>AWS Health</h3><p>There is an open issue on service {{ $labels.service }} in region {{ $labels.region }}.<br /><a href=\"https://status.aws.amazon.com/\">AWS Status</a></p>"
+              "description_markdown" = "### AWS Health\nThere is an open issue on service {{ $labels.service }} in region {{ $labels.region }}.\n[AWS Status](https://status.aws.amazon.com/)"
             },
             local.prometheus_alert_groups_rules_annotations
           )

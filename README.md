@@ -73,7 +73,3 @@ Terraform module to deploy aws-health-exporter on kubernetes.
 | service\_port\_name | Name of the service port. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
-### grafana_dashboards
-
-### prometheus_alert_groups

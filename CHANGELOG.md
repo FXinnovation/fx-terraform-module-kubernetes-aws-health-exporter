@@ -1,4 +1,9 @@
 
+0.7.0 / 2020-04-13
+==================
+
+  * feat: Add link to AWS Status webpage on open issue alert
+
 0.6.0 / 2020-04-13
 ==================
 
