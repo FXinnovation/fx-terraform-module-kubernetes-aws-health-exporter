@@ -28,7 +28,7 @@ locals {
       "rules" = [
         {
           "alert" = "aws-health - open scheduled changes"
-          "expr"  = "sum(aws_health_events{category=\"scheduledChanges\",status_code=\"open\"}) > 0"
+          "expr"  = "aws_health_events{category=\"scheduledChanges\",status_code=\"open\"} > 0"
           "for"   = "1m"
           "labels" = merge(
             {
@@ -47,7 +47,7 @@ locals {
         },
         {
           "alert" = "aws-health - open issues"
-          "expr"  = "sum(aws_health_events{category=\"issue\",status_code=\"open\"}) > 0"
+          "expr"  = "aws_health_events{category=\"issue\",status_code=\"open\"} > 0"
           "for"   = "1m"
           "labels" = merge(
             {
@@ -66,7 +66,7 @@ locals {
         },
         {
           "alert" = "aws-health - open account notifications"
-          "expr"  = "sum(aws_health_events{category=\"accountNotification\",status_code=\"open\"}) > 0"
+          "expr"  = "aws_health_events{category=\"accountNotification\",status_code=\"open\"} > 0"
           "for"   = "1m"
           "labels" = merge(
             {

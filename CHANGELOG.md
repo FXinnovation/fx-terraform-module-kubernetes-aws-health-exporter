@@ -1,5 +1,10 @@
 
-0.5.1 / 2020-04-03
+0.6.0 / 2020-04-13
+==================
+
+  * feat: Stopping watch for the sum in the alerts.
+
+0.5.1 / 2020-04-01
 ==================
 
   * fix: Improve alert names
