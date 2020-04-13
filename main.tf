@@ -4,11 +4,11 @@
 
 locals {
   labels = {
-    "app.kubernetes.io/version"    = var.image_version
-    "app.kubernetes.io/component"  = "exporter"
-    "app.kubernetes.io/part-of"    = "monitoring"
-    "app.kubernetes.io/managed-by" = "terraform"
-    "app.kubernetes.io/name"       = "aws-health-exporter"
+    "version"    = var.image_version
+    "component"  = "exporter"
+    "part-of"    = "monitoring"
+    "managed-by" = "terraform"
+    "name"       = "aws-health-exporter"
   }
   port         = 9383
   service_port = 80
@@ -24,7 +24,7 @@ locals {
   )
   prometheus_alert_groups = [
     {
-      "name" = "aws-health-exporter"
+      "name" = "aws-health"
       "rules" = [
         {
           "alert" = "aws-health - open scheduled changes"
@@ -39,8 +39,10 @@ locals {
           )
           "annotations" = merge(
             {
-              "summary"     = "AWS Health - Open Scheduled Changes"
-              "description" = "AWS Health:\n {{ $value }} open scheduled changes."
+              "summary"              = "AWS Health - Open Scheduled Change"
+              "description"          = "AWS Health:\n There is an open scheduled change on service {{ $labels.service }} in region {{ $labels.region }}."
+              "description_html"     = "<h3>AWS Health</h3><p>There is an open scheduled change on service {{ $labels.service }} in region {{ $labels.region }}.</p>"
+              "description_markdown" = "### AWS Health\nThere is an open scheduled change on service {{ $labels.service }} in region {{ $labels.region }}."
             },
             local.prometheus_alert_groups_rules_annotations
           )
@@ -58,8 +60,10 @@ locals {
           )
           "annotations" = merge(
             {
-              "summary"     = "AWS Health - Open Issues"
-              "description" = "AWS Health:\n {{ $value }} open issues."
+              "summary"              = "AWS Health - Open Issue"
+              "description"          = "AWS Health:\n There is an open issue on service {{ $labels.service }} in region {{ $labels.region }}."
+              "description_html"     = "<h3>AWS Health</h3><p>There is an open issue on service {{ $labels.service }} in region {{ $labels.region }}.</p>"
+              "description_markdown" = "### AWS Health\nThere is an open issue on service {{ $labels.service }} in region {{ $labels.region }}."
             },
             local.prometheus_alert_groups_rules_annotations
           )
@@ -77,8 +81,10 @@ locals {
           )
           "annotations" = merge(
             {
-              "summary"     = "AWS Health - Open Account Notifications"
-              "description" = "AWS Health:\n {{ $value }} open account notifications."
+              "summary"              = "AWS Health - Open Account Notification"
+              "description"          = "AWS Health:\n There is an open account notification on service {{ $labels.service }} in region {{ $labels.region }}."
+              "description_html"     = "<h3>AWS Health</h3><p>There is an open account notification on service {{ $labels.service }} in region {{ $labels.region }}.</p>"
+              "description_markdown" = "### AWS Health\nThere is an open account notification on service {{ $labels.service }} in region {{ $labels.region }}."
             },
             local.prometheus_alert_groups_rules_annotations
           )
@@ -115,7 +121,7 @@ resource "kubernetes_deployment" "this" {
     )
     labels = merge(
       {
-        "app.kubernetes.io/instance" = var.deployment_name
+        "instance" = var.deployment_name
       },
       local.labels,
       var.labels,
@@ -128,8 +134,7 @@ resource "kubernetes_deployment" "this" {
 
     selector {
       match_labels = {
-        app    = "aws-health-exporter"
-        random = random_string.selector.result
+        selector = "aws-health-exporter-${random_string.selector.result}"
       }
     }
     template {
@@ -140,9 +145,8 @@ resource "kubernetes_deployment" "this" {
         )
         labels = merge(
           {
-            "app.kubernetes.io/instance" = var.deployment_name
-            app                          = "aws-health-exporter"
-            random                       = random_string.selector.result
+            "instance" = var.deployment_name
+            selector   = "aws-health-exporter-${random_string.selector.result}"
           },
           local.labels,
           var.labels,
@@ -245,7 +249,7 @@ resource "kubernetes_service" "this" {
     )
     labels = merge(
       {
-        "app.kubernetes.io/instance" = var.service_name
+        "instance" = var.service_name
       },
       local.labels,
       var.labels,
@@ -255,8 +259,7 @@ resource "kubernetes_service" "this" {
 
   spec {
     selector = {
-      random = random_string.selector.result
-      app    = "aws-health-exporter"
+      selector = "aws-health-exporter-${random_string.selector.result}"
     }
     type = "ClusterIP"
     port {
@@ -284,7 +287,7 @@ resource "kubernetes_secret" "this" {
     )
     labels = merge(
       {
-        "app.kubernetes.io/instance" = var.secret_name
+        "instance" = var.secret_name
       },
       local.labels,
       var.labels,

@@ -2,6 +2,7 @@
 0.6.0 / 2020-04-13
 ==================
 
+  * feat: Add annotations on alerts, improve annoations on k8s resources
   * feat: Stopping watch for the sum in the alerts.
 
 0.5.1 / 2020-04-01
