@@ -214,11 +214,11 @@ resource "kubernetes_deployment" "this" {
           }
 
           resources {
-            requests {
+            requests = {
               memory = "32Mi"
               cpu    = "5m"
             }
-            limits {
+            limits = {
               memory = "64Mi"
               cpu    = "20m"
             }
