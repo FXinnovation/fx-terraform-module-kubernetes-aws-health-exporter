@@ -2,7 +2,7 @@
 0.7.0 / 2021-08-16
 ==================
 
-  * feat: (BREAKING CHANGE) Update to version 2.x for kubernetes provider
+  * feat (BREAKING): Update to version 2.x for kubernetes provider
   * chore: bump pre-commit hooks
 
 0.6.0 / 2020-04-13
