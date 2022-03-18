@@ -18,7 +18,7 @@ locals {
   )
   prometheus_alert_groups_rules_labels = merge(
     {
-      "source" = "https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-kubernetes-aws-health-exporter"
+      "source" = "https://github.com/FXinnovation/fx-terraform-module-kubernetes-aws-health-exporter"
     },
     var.prometheus_alert_groups_rules_labels
   )
